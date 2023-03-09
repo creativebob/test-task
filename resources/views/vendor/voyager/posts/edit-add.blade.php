@@ -101,7 +101,8 @@
                                 '_field_name'  => 'title',
                                 '_field_trans' => get_field_translations($dataTypeContent, 'title')
                             ])
-                            <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('voyager::generic.title') }}" value="{{ $dataTypeContent->title ?? '' }}">
+                            {{-- <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('voyager::generic.title') }}" value="{{ $dataTypeContent->title ?? '' }}"> --}}
+                            <textarea class="form-control" id="title" name="title" placeholder="{{ __('voyager::generic.title') }}">{{ $dataTypeContent->title ?? '' }}</textarea>
                         </div>
                     </div>
 
