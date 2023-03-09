@@ -101,7 +101,8 @@
                                 '_field_name'  => 'title',
                                 '_field_trans' => get_field_translations($dataTypeContent, 'title')
                             ])
-                            <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('voyager::generic.title') }}" value="{{ $dataTypeContent->title ?? '' }}">
+                            <textarea class="form-control" id="textarea-title" placeholder="{{ __('voyager::generic.title') }}">{{ $dataTypeContent->title ?? '' }}</textarea>
+                            <input type="hidden" id="title" name="title" value="{{ $dataTypeContent->title ?? '' }}">
                         </div>
                     </div>
 
@@ -346,6 +347,16 @@
         }
 
         $('document').ready(function () {
+
+            // Передча значения из textarea в input
+            let textareaTitle = document.querySelector('#textarea-title');
+            let fieldTitle = document.querySelector('#title');
+
+            textareaTitle.addEventListener('keyup', function(event) {
+                fieldTitle.value = event.target.value;
+                fieldTitle.dispatchEvent(new Event("keyup"));
+            })
+
             $('#slug').slugify();
 
             $('.toggleswitch').bootstrapToggle();
